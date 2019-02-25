@@ -15,7 +15,10 @@
     "ami_description": "packer create ami demo",
     "tags": {
         "Name": "packer ami demo",
-        "Release": "v0.1"
+        "OS_Version": "Amazon_Linux_2",
+        "Release": "v0.1",
+        "CreatedDate": "{{timestamp}}",
+        "Maintainer": "phyominhtun1990@gmail.com"
       }
   }],
  
