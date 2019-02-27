@@ -27,8 +27,7 @@
 
 - Validate Packer Templates. 
     >>>> ***$ packer validate*** example.json
-           **Result** Template validated successfully.
-
+           
 - Run/Build Packer Template.
     >>>> ***$ packer build*** example.json
 
