@@ -1,11 +1,4 @@
  {
-  "variables": {
-    "aws_access_key": "",
-    "aws_secret_key": "",
-    "source_ami": "ami-035be7bafff33b6b6",
-    "instance_type": "t2.micro",
-    "region": "us-east-1"
-  },
   "builders": [{
     "type": "amazon-ebs",
     "access_key": "{{user `aws_access_key`}}",
@@ -16,6 +9,9 @@
     "ssh_username": "ec2-user",
     "ami_name": "packer-amazonlinux2-{{timestamp}}",
     "ami_description": "packer create ami demo",
+    "vpc_id": "{{user `vpc_id`}}",
+    "subnet_id": "{{user `subnet_id`}}",
+    "security_group_id": "{{user `security_group_id`}}",
     "tags": {
         "Name": "packer ami demo",
         "OS_Version": "Amazon_Linux_2",

@@ -32,6 +32,9 @@
 - Run/Build Packer Template.
     >>>> ***$ packer build*** example.json
 
+- Run/Build with External Variable File.
+    >>>> ***$packer build*** -var-file=variable.json example.json
+
 Reference: **URL: [https://www.packer.io/docs/index.html](https://www.packer.io/docs/index.html)**
 
 ---
