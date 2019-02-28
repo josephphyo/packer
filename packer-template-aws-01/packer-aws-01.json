@@ -1,4 +1,4 @@
- {
+{
   "builders": [{
     "type": "amazon-ebs",
     "access_key": "{{user `aws_access_key`}}",
@@ -13,24 +13,29 @@
     "subnet_id": "{{user `subnet_id`}}",
     "security_group_id": "{{user `security_group_id`}}",
     "tags": {
-        "Name": "packer ami demo",
-        "OS_Version": "Amazon_Linux_2",
-        "Release": "v0.1",
-        "CreatedDate": "{{timestamp}}",
-        "Maintainer": "phyominhtun1990@gmail.com"
-      }
+      "Name": "packer ami demo",
+      "OS_Version": "Amazon_Linux_2",
+      "Release": "v0.1",
+      "CreatedDate": "{{timestamp}}",
+      "Maintainer": "phyominhtun1990@gmail.com"
+    }
   }],
- 
-  "provisioners": [
-  {
-    "type": "shell",
-    "execute_command": "echo '{{user `ssh_pass`}}' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'",
-    "script": "./initial-provision-script.sh"
-  },
-  {
-    "type": "file",
-    "source": "./welcome.txt",
-    "destination": "/home/ec2-user/"
-  }
-  ]
+
+  "provisioners": [{
+      "type": "shell",
+      "execute_command": "echo '{{user `ssh_pass`}}' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'",
+      "script": "./initial-provision-script.sh"
+    },
+    {
+      "type": "file",
+      "source": "./welcome.txt",
+      "destination": "/home/ec2-user/"
+    }
+  ],
+
+  "post-processors": [{
+    "type": "manifest",
+    "output": "manifest.json",
+    "strip_path": true
+  }]
 }
